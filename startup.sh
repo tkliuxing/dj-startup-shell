@@ -17,12 +17,6 @@ done
 
 read -t 30 -p "请输入项目名称，只允许[a-z]:" name
 
-echo "${name}"
-
-echo "${name}"
-
-exit
-
 
 # Generate Pipfile
 
