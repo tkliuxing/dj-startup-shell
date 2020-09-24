@@ -15,7 +15,7 @@ do
 	fi
 done
 
-echo -n "请输入项目名称，只允许[a-z]:" && read name
+echo -n "请输入项目名称，只允许[a-z]:" && read -t 300 name
 
 
 # Generate Pipfile
