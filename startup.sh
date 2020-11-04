@@ -43,7 +43,7 @@ pyyaml = "*"
 psycopg2-binary = "*"
 Pillow = "*"
 coreapi = "*"
-drf-generators = {git = "https://github.com/tkliuxing/drf-generators.git"}
+drf-generators = {git = "https://gitee.com/tkliuxing/drf-generators.git"}
 django-model-utils = ">=1.4.0"
 numpy = "*"
 pandas = "*"
@@ -72,11 +72,11 @@ pipenv run django-admin startapp ${name} apps/${name}
 
 mkdir tmp
 
-git clone https://github.com/tkliuxing/dj-usercenter.git tmp/dj-usercenter
-git clone https://github.com/tkliuxing/dj-notice.git tmp/dj-notice
-git clone https://github.com/tkliuxing/dj-baseconfig.git tmp/dj-baseconfig
-git clone https://github.com/tkliuxing/dj-formtemplate.git tmp/dj-formtemplate
-git clone https://github.com/tkliuxing/dj-flatdata.git tmp/dj-flatdata
+git clone https://gitee.com/tkliuxing/dj-usercenter.git tmp/dj-usercenter
+git clone https://gitee.com/tkliuxing/dj-notice.git tmp/dj-notice
+git clone https://gitee.com/tkliuxing/dj-baseconfig.git tmp/dj-baseconfig
+git clone https://gitee.com/tkliuxing/dj-formtemplate.git tmp/dj-formtemplate
+git clone https://gitee.com/tkliuxing/dj-flatdata.git tmp/dj-flatdata
 
 mv tmp/dj-usercenter/usercenter apps/
 mv tmp/dj-baseconfig/baseconfig apps/
