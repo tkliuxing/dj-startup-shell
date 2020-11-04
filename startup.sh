@@ -76,11 +76,13 @@ git clone https://github.com/tkliuxing/dj-usercenter.git tmp/dj-usercenter
 git clone https://github.com/tkliuxing/dj-notice.git tmp/dj-notice
 git clone https://github.com/tkliuxing/dj-baseconfig.git tmp/dj-baseconfig
 git clone https://github.com/tkliuxing/dj-formtemplate.git tmp/dj-formtemplate
+git clone https://github.com/tkliuxing/dj-flatdata.git tmp/dj-flatdata
 
 mv tmp/dj-usercenter/usercenter apps/
 mv tmp/dj-baseconfig/baseconfig apps/
 mv tmp/dj-notice/notice apps/
 mv tmp/dj-formtemplate/formtemplate apps/
+mv tmp/dj-flatdata/flatdata apps/
 
 rm -rf tmp
 
@@ -115,6 +117,7 @@ INSTALLED_APPS = [
     'baseconfig',
     'notice',
     'formtemplate',
+    'flatdata',
     '${name}',
 ]
 
@@ -260,4 +263,4 @@ ALLOWED_HOSTS = ['*']
 EOF
 
 
-echo "生成完毕，请编辑'project/settiings.py'，并创建'project/local_settings.py'文件"
+echo "生成完毕，请编辑'project/local_settings.py'，和'project/urls.py'文件以便配置项目"
