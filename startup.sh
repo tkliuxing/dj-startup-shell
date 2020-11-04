@@ -263,4 +263,44 @@ ALLOWED_HOSTS = ['*']
 EOF
 
 
+cat>project/urls.py<<EOF
+from django.conf import settings
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('', include('baseconfig.urls')),
+    path('', include('usercenter.urls')),
+    path('', include('notice.urls')),
+    path('', include('formtemplate.urls')),
+    path('', include('flatdata.urls')),
+    path('', include('${name}.urls')),
+    path('admin/', admin.site.urls),
+]
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    from django.conf.urls import url
+    from rest_framework.permissions import AllowAny
+    from drf_yasg.views import get_schema_view
+    from drf_yasg import openapi
+    schema_view = get_schema_view(
+        openapi.Info(
+            title="API",
+            default_version='v1',
+            description="API接口文档",
+            contact=openapi.Contact(email="xxx@xx.com"),
+        ),
+        public=True,
+        permission_classes=(AllowAny,),
+    )
+    urlpatterns += [
+        url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+        url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+        url(r'^api-docs/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    ]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+EOF
+
+
 echo "生成完毕，请编辑'project/local_settings.py'，和'project/urls.py'文件以便配置项目"
