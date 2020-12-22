@@ -77,12 +77,14 @@ git clone https://gitee.com/tkliuxing/dj-notice.git tmp/dj-notice
 git clone https://gitee.com/tkliuxing/dj-baseconfig.git tmp/dj-baseconfig
 git clone https://gitee.com/tkliuxing/dj-formtemplate.git tmp/dj-formtemplate
 git clone https://gitee.com/tkliuxing/dj-flatdata.git tmp/dj-flatdata
+git clone https://gitee.com/tkliuxing/dj-article.git tmp/dj-article
 
 mv tmp/dj-usercenter/usercenter apps/
 mv tmp/dj-baseconfig/baseconfig apps/
 mv tmp/dj-notice/notice apps/
 mv tmp/dj-formtemplate/formtemplate apps/
 mv tmp/dj-flatdata/flatdata apps/
+mv tmp/dj-article/article apps/
 
 rm -rf tmp
 
@@ -118,6 +120,7 @@ INSTALLED_APPS = [
     'notice',
     'formtemplate',
     'flatdata',
+    'article',
     '${name}',
 ]
 
@@ -274,6 +277,7 @@ urlpatterns = [
     path('', include('notice.urls')),
     path('', include('formtemplate.urls')),
     path('', include('flatdata.urls')),
+    path('', include('article.urls')),
     path('', include('${name}.urls')),
     path('admin/', admin.site.urls),
 ]
