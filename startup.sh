@@ -18,6 +18,43 @@ done
 read -t 30 -p "请输入项目名称，只允许[a-z]:" name
 
 
+# Generate .gitignore file
+
+cat>.gitignore<<EOF
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.venv/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# pyenv
+.env
+.python-version
+
+# Django stuff:
+*.log
+local_settings.py
+EOF
+
+
 # Generate Pipfile
 
 cat>Pipfile<<EOF
@@ -58,6 +95,8 @@ django-mssql-backend = "*"
 [requires]
 python_version = "3.7"
 EOF
+
+mkdir .venv
 
 
 # Install python enviroument
