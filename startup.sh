@@ -5,7 +5,7 @@ echo "Test!"
 
 # Test command exist
 
-commands=( 'pipenv' 'pyenv' 'git' )
+commands=( 'pipenv' 'git' )
 
 for i in ${commands[@]};
 do
