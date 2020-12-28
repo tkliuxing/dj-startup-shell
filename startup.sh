@@ -89,8 +89,6 @@ redis = "*"
 docxtpl = "*"
 python-barcode = "*"
 jieba = "*"
-pyodbc = "*"
-django-mssql-backend = "*"
 
 [requires]
 python_version = "3.7"
@@ -117,6 +115,7 @@ git clone https://gitee.com/tkliuxing/dj-baseconfig.git tmp/dj-baseconfig
 git clone https://gitee.com/tkliuxing/dj-formtemplate.git tmp/dj-formtemplate
 git clone https://gitee.com/tkliuxing/dj-flatdata.git tmp/dj-flatdata
 git clone https://gitee.com/tkliuxing/dj-article.git tmp/dj-article
+git clone https://gitee.com/tkliuxing/dj-flow.git tmp/dj-flow
 
 mv tmp/dj-usercenter/usercenter apps/
 mv tmp/dj-baseconfig/baseconfig apps/
@@ -124,6 +123,7 @@ mv tmp/dj-notice/notice apps/
 mv tmp/dj-formtemplate/formtemplate apps/
 mv tmp/dj-flatdata/flatdata apps/
 mv tmp/dj-article/article apps/
+mv tmp/dj-flow/flow apps/
 
 rm -rf tmp
 
@@ -158,6 +158,7 @@ INSTALLED_APPS = [
     'baseconfig',
     'notice',
     'formtemplate',
+    'flow',
     'flatdata',
     'article',
     '${name}',
@@ -316,6 +317,7 @@ urlpatterns = [
     path('', include('notice.urls')),
     path('', include('formtemplate.urls')),
     path('', include('flatdata.urls')),
+    path('', include('flow.urls')),
     path('', include('article.urls')),
     path('', include('${name}.urls')),
     path('admin/', admin.site.urls),
@@ -324,7 +326,7 @@ urlpatterns = [
 if settings.DEBUG:
     from django.conf.urls.static import static
     from django.conf.urls import url
-    from rest_framework.permissions import AllowAny
+    from rest_framework.permissions import IsAuthenticated
     from drf_yasg.views import get_schema_view
     from drf_yasg import openapi
     schema_view = get_schema_view(
@@ -335,7 +337,7 @@ if settings.DEBUG:
             contact=openapi.Contact(email="xxx@xx.com"),
         ),
         public=True,
-        permission_classes=(AllowAny,),
+        permission_classes=(IsAuthenticated,),
     )
     urlpatterns += [
         url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
